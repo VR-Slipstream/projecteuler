@@ -32,22 +32,27 @@ print(even_fib(1, 2))
 
 # Largest prime factor
 
-factors = []
-def prime_factors(x):
-    global factors
-    for i in range(2, x//2):
-        if x % i == 0:
-            factors.append(i)
+from math import sqrt
 
-    for factor in factors[::-1]:
-        for j in range(2, factor//2):
-            if factor % j == 0:
-                factors.remove(factor)
-                break
-            
-    return factors[-1]
-            
-print(prime_factors(600851475143))
+x = 600851475143
+
+factors = []
+
+for i in range(1, x//2 + 1):
+    if x % i == 0:
+        print("Status_factors, ", i)
+        factors.append(i)
+
+primefactors = factors[::-1]
+        
+for i in factors:
+    for j in range(2, int(sqrt(i)) + 1):
+        if i % j == 0:
+            print("Status, ", i)
+            primefactors.remove(i)
+            break
+
+print(f"Largest Prime factor = {primefactors.pop(0)}")        
 
 
 # Largest palindrome product
